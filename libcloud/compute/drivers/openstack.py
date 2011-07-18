@@ -302,8 +302,10 @@ class OpenStackNodeDriver_v1_1(MossoBasedNodeDriver):
         ex_metadata = kwargs.get('ex_metadata')
         ex_personality = kwargs.get('ex_personality')
 
-        flavorRef = node_size.links[0]['href']
-        imageRef = node_image.extra['links'][0]['href']
+        #flavorRef = node_size.links[0]['href']
+        flavorRef = str(node_size.id)
+        #imageRef = node_image.extra['links'][0]['href']
+        imageRef= str(node_image.id)
         request = {'server': {'name': name, 'flavorRef': flavorRef,
                               'imageRef': imageRef}}
         if ex_metadata:
