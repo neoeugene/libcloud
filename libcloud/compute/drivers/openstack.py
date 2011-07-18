@@ -374,6 +374,11 @@ class OpenStackNodeDriver_v1_1(MossoBasedNodeDriver):
         body = {"image": {"serverId": node.id, "name": image_name}}
         return json.dumps(body)
 
+    def ex_reboot(self, node, reboot_type):
+        body = {"reboot" : {"type": reboot_type}}
+        resp = self._node_action(node, body=body)
+        return resp.status == 202
+
 
 
 class OpenStackIps(object):
